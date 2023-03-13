@@ -184,7 +184,7 @@ pageEncoding="UTF-8"%> <%@ include file="/common/taglib.jsp"%>
                 <li>
                   <p>
                     <i class="fas fa-map-marker-alt"></i>Địa chỉ: 371 Nguyễn
-                    Kiệm, P.3,<br />Q.Gò Vấp,<br />
+                    Kiệm, P.3<br />Quận Gò Vấp,<br />
                     TPHCM
                   </p>
                 </li>

@@ -35,8 +35,6 @@ public class RemoveItemController extends HttpServlet {
 			CurrencyPrice currencyPrice = new CurrencyPrice();
 			String stringTotal = currencyPrice.curPrice(totalPrice);
 			httpSession.setAttribute("total", stringTotal);
-			
-			
 			map.remove(Integer.parseInt(cakeId));
 
 			

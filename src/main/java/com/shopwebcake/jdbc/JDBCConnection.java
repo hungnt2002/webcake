@@ -28,9 +28,9 @@ public class JDBCConnection {
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
+			
 			String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=ShopCake;encrypt=true;trustServerCertificate=true;sslProtocol=TLSv1.2";
 			return DriverManager.getConnection(connectionURL, "sa", "123");
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

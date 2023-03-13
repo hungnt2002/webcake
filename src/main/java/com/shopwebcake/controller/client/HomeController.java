@@ -28,13 +28,10 @@ public class HomeController extends HttpServlet {
 		CakeService cakeService = new CakeService();
 		CategoryService categoryService = new CategoryService();
 		List<Cake> listCakeDetail = new ArrayList<Cake>();
-		
-		
 		listCakeDetail = cakeService.getAll();  //Lấy list allCake
 		for (Cake cake : listCakeDetail ) {
 			String curPrice =  cakeService.currencyPrice(cake.getPrice());
-			cake.setCurrencyPrice(curPrice);	
-						
+			cake.setCurrencyPrice(curPrice);
 			
 		req.setAttribute("listCakeDetail", listCakeDetail); 
 		}

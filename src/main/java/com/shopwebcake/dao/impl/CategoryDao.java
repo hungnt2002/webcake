@@ -1,5 +1,6 @@
 package com.shopwebcake.dao.impl;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ public class CategoryDao extends JDBCConnection implements ICategoryDao {
 	@Override
 	public Category get(int id) {
 		String sql = "SELECT * FROM tblCategory WHERE categoryid=?";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Category category = new Category();
@@ -59,7 +60,7 @@ public class CategoryDao extends JDBCConnection implements ICategoryDao {
 	@Override
 	public Category get(String name) {
 		String sql = "SELECT * FROM tblCategory WHERE name=?";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Category category = new Category();
@@ -103,7 +104,7 @@ public class CategoryDao extends JDBCConnection implements ICategoryDao {
 	public List<Category> getAll() {
 		List<Category> categoryList = new ArrayList<Category>();
 		String sql = "SELECT * FROM tblCategory ";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 

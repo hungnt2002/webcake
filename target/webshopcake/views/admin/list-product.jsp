@@ -98,7 +98,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
                               >
                               |
                               <a
-                                href="<c:url value='/admin/product/delete?id=${pro.cakeId }'/>"
+                                href="<c:url value='/admin/delete-cake?cakeId=${pro.cakeId }'/>"
                                 class="center"
                                 >Delete</a
                               >

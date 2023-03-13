@@ -102,15 +102,18 @@
 								<c:forEach var="cart1" items="${cart}">
 									<tr>
 										<td class="thumbnail-img"><a href="#"> <img
-												class="img-fluid" src="${cart1.value.cake.thumbnail }" alt="" />
+												class="img-fluid" src="template/client/images/${cart1.value.cake.thumbnail }" alt="" />
 										</a></td>
-										<td class="name-pr"><a href="#"> ${cart1.value.cake.cakeName }
-												 </a></td>
+										<td class="name-pr">
+											<a href="#"> ${cart1.value.cake.cakeName }</a>
+										</td>
 										<td class="price-pr">
 											<p> ${cart1.value.cake.currencyPrice }</p>
 										</td>
-										<td class="quantity-box"><input type="number" size="4"
-											value="${cart1.value.quantity }" min="0" step="1" class="c-input-text qty text"></td>
+										<td class="quantity-box">
+											<input type="hidden" value="${cart1.value.cake.cakeId} " class = "cakeIdInput">
+											<input type="number" size="4" value="${cart1.value.quantity }" min="1" max="1000" maxlength="4" step="1" class="c-input-text qty text">
+										</td>
 										<td class="total-pr">
 											<p>${cart1.value.currencyPrice }</p>
 										</td>
@@ -135,7 +138,7 @@
 
 						<div class="d-flex gr-total">
 							<h5>Tổng thanh toán</h5>
-							<div class="ml-auto h5">${total }</div>
+							<div class="ml-auto h5 total-cart">${total }</div>
 						</div>
 						<hr>
 					</div>
@@ -175,6 +178,32 @@
 	<script
 		src="<c:url value='/template/client/js/contact-form-script.js'/> "></script>
 	<script src="<c:url value='/template/client/js/custom.js'/> "></script>
+
+	<script>
+		// let total = document.querySelector(".total-pr").innerText
+		let calcTotal = () => {
+			let quantity = document.querySelector(".qty").value
+			// let total = document.querySelector(".total-pr").innerText
+			// total = parseInt(total.replace(/\D/g, ''));
+
+			let quantityInput = document.querySelectorAll(".qty")
+			quantityInput.forEach(item => {
+				item.addEventListener('change', (event) => {
+					let quantity = event.target.value
+					let cakeId = item.parentNode.querySelector(".cakeIdInput").value
+					let str = "http://localhost:8080/webshopcake/edit-to-cart?cakeId="+cakeId+"&quantity="+quantity+"&isEdit=123"
+					str = str.split(" ").join("")
+					location.href = str;
+				})
+			})
+
+			// let cartId = document.querySelector(".cakeIdInput").value
+			window.addEventListener("beforeunload", () => {
+				location.href = "http://localhost:8080/webshopcake/view-cart";
+			})
+		}
+		calcTotal()
+	</script>
 </body>
 
 </html>

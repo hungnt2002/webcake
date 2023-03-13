@@ -17,7 +17,7 @@ public class CartDao extends JDBCConnection implements ICartDao {
 	@Override
 	public void insert(Cart cart) {
 		String sql = "INSERT INTO tblCart ( userId, buydate) VALUES (?,?)";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -70,7 +70,7 @@ public class CartDao extends JDBCConnection implements ICartDao {
 	@Override
 	public void delete(int id) {
 		String sql = "DELETE FROM tblCart WHERE cartid=?";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 
 		try {
@@ -107,7 +107,7 @@ public class CartDao extends JDBCConnection implements ICartDao {
 	@Override
 	public Cart get(int id) {
 		String sql = "SELECT * FROM tblCart WHERE cartId=?";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Cart cart = new Cart();
@@ -157,7 +157,7 @@ public class CartDao extends JDBCConnection implements ICartDao {
 	public List<Cart> getAll() {
 		List<Cart> cartList = new ArrayList<Cart>();
 		String sql = "SELECT * FROM tblCart";
-		java.sql.Connection connection = null;
+		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 

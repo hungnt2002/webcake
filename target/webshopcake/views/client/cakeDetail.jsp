@@ -44,7 +44,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -110,18 +109,19 @@
 						<ul>
 							<li>
 								<div class="form-group quantity-box">
-									<label class="control-label">Quantity</label> <input
-										class="form-control" value="1" min="0" max="20" type="number">
+									<label class="control-label">Quantity</label>
+									<input class="form-control quantity-input" value="1" min="1" max="100" type="number"">
 								</div>
 							</li>
 						</ul>
-
+						
 						<div class="price-box-bar">
 							<div class="cart-and-bay-btn">
 
 								<a class="btn hvr-hover cart" data-fancybox-close=""
-									href="${pageContext.request.contextPath }/add-to-cart?cakeId=${cakeDetail.cakeId}&quantity=1">Thêm
-									vào giỏ </a>
+									href="${pageContext.request.contextPath }/add-to-cart?cakeId=${cakeDetail.cakeId}&quantity={quantity}"
+									onclick="addCart()"
+									>Thêm vào giỏ </a>
 							</div>
 						</div>
 
@@ -210,6 +210,17 @@
 	<script
 		src="<c:url value='/template/client/js/contact-form-script.js'/> "></script>
 	<script src="<c:url value='/template/client/js/custom.js'/> "></script>
+	<script>
+		let quantity1 = document.querySelector(".quantity-input").value
+		let addCart = () => {
+			let quantity1 = document.querySelector(".quantity-input").value
+			let str = "http://localhost:8080/webshopcake/edit-to-cart?cakeId="+cakeId+"&quantity="+quantity+""
+			str = str.split(" ").join("")
+			location.href = str;
+		}
+
+
+	</script>
 </body>
 
 </html>

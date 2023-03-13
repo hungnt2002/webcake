@@ -204,7 +204,6 @@
 
         initialization: function () {
             mainApp.main_fun();
-
         }
 
     }

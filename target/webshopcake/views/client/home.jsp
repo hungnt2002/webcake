@@ -181,68 +181,6 @@
 		</div>
 	</div>
 
-	<!-- Start Products  -->
-	<div class="products-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="title-all text-center">
-						<h1>Sản phẩm được quan tâm nè</h1>
-						
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="special-menu text-center">
-						<div class="button-group filter-button-group">
-							<button class="active" data-filter="*">All</button>
-							<button data-filter=".top-featured">Top featured</button>
-							<button data-filter=".best-seller">Best seller</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row special-list">
-				
-				
-				<c:forEach var="cake1" items="${cakeSearchByCategory1 }">
-
-				<div class="col-lg-3 col-md-6 special-grid best-seller">
-					<div class="products-single fix">
-						<div class="box-img-hover">
-							<div class="type-lb">
-								<p class="sale">Sale</p>
-							</div>
-							<img src="template/client/images/${cake1.thumbnail}"
-								class="img-fluid " alt="Image">
-							<div class="mask-icon">
-								<ul>
-									<li><a href="#" data-toggle="tooltip"
-										data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-									<li><a href="#" data-toggle="tooltip"
-										data-placement="right" title="Compare"><i
-											class="fas fa-sync-alt"></i></a></li>
-									<li><a href="#" data-toggle="tooltip"
-										data-placement="right" title="Add to Wishlist"><i
-											class="far fa-heart"></i></a></li>
-								</ul>
-								<a class="cart" href="${pageContext.request.contextPath }/add-to-cart?cakeId=${cake1.cakeId}&quantity=1">Thêm vào giỏ</a>
-							</div>
-						</div>
-						<div class="why-text">
-							<h4>${cake1.cakeName }</h4>
-							<h5>${cake1.currencyPrice }</h5>
-						</div>
-					</div>
-				</div>
-				</c:forEach>
-			</div>
-		</div>
-	</div>
-	<!-- End Products  -->
-
 	<!-- Start Blog  -->
 	<div class="latest-blog">
 		<div class="container">
@@ -275,8 +213,8 @@
 													class="far fa-heart"></i></a></li>
 										</ul>
 										<a class="cart"
-											href="${pageContext.request.contextPath }/add-to-cart?cakeId=${cake.cakeId}&quantity=1">Thêm
-											vào giỏ</a>
+											href="${pageContext.request.contextPath }/add-to-cart?cakeId=${cake.cakeId}&quantity=1&isEdit=false">Thêm vào giỏ
+										</a>
 									</div>
 								</div>
 								<div class="why-text">
