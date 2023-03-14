@@ -18,7 +18,7 @@ public class CakeDao extends JDBCConnection implements ICakeDao {
 	@Override
 	public void insert(Cake cake) {
 		String sql = "INSERT INTO tblCake (cakeName, thumbnail, content, categoryid, price) VALUES (?,?,?,?,?)";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -58,7 +58,7 @@ public class CakeDao extends JDBCConnection implements ICakeDao {
 	@Override
 	public void edit(Cake cake) {
 		String sql = "UPDATE tblCake SET cakeName = ? , thumbnail = ?, content = ?,categoryid=?, price=?  WHERE cakeId = ?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 
 		try {
@@ -96,7 +96,7 @@ public class CakeDao extends JDBCConnection implements ICakeDao {
 	@Override
 	public void delete(int id) {
 		String sql = "DELETE FROM tblCake WHERE cakeId=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 
 		try {
@@ -126,7 +126,7 @@ public class CakeDao extends JDBCConnection implements ICakeDao {
 	@Override
 	public Cake get(int id) {
 		String sql = "SELECT * FROM tblCake WHERE cakeId=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Cake cake = new Cake();
@@ -175,7 +175,7 @@ public class CakeDao extends JDBCConnection implements ICakeDao {
 	public List<Cake> getAll() {
 		List<Cake> cakeList = new ArrayList<Cake>();
 		String sql = "SELECT * FROM tblCake";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -225,7 +225,7 @@ public class CakeDao extends JDBCConnection implements ICakeDao {
 	public List<Cake> searchByCategory(int categoryId) {
 		List<Cake> cakeList = new ArrayList<Cake>();
 		String sql = "SELECT * FROM tblCake WHERE categoryId=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 

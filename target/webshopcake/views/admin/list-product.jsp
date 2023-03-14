@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ page
 language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<c:url value="template/admin" var="url"></c:url>
+<c:url value="/template/admin" var="url"></c:url>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Management</title>
+    <title>Quản lý bánh</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="${url}/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
@@ -92,7 +92,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
                               >
                               |
                               <a
-                                href="<c:url value='/admin/product/edit?id=${pro.cakeId }'/>"
+                                href="<c:url value='/admin/edit-product?id=${pro.cakeId }'/>"
                                 class="center"
                                 >Edit</a
                               >

@@ -1,12 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ page
-language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="UTF-8"%> <%@ include file="/common/taglib.jsp"%>
 <c:url value="template/admin" var="url"></c:url>
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <script src="${url}/js/ckeditor.js" />"></script> -->
-    <meta charset="utf-8" />
+    <script src="${url}/js/ckeditor.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit User</title>
     <!-- BOOTSTRAP STYLES-->
@@ -47,12 +46,22 @@ pageEncoding="ISO-8859-1"%>
                   <div class="row">
                     <div class="col-md-6">
                       <h3>Info Product:</h3>
-
+                      <!-- <div>
+                        <form
+                          action="${pageContext.request.contextPath }/test"
+                          method="POST"
+                        >
+                          <input type="text" name="username" />
+                          <input type="password" name="password" />
+                          <input type="submit" value="Submit" />
+                        </form>
+                      </div> -->
                       <form
                         role="form"
-                        action="add-product"
+                        action="${pageContext.request.contextPath }/add-product"
                         method="post"
                         enctype="multipart/form-data"
+                        accept-charset="UTF-8"
                       >
                         <div class="form-group">
                           <label>Name:</label>
@@ -60,6 +69,7 @@ pageEncoding="ISO-8859-1"%>
                             class="form-control"
                             placeholder="please enter Product Name"
                             name="name"
+                            type="text"
                           />
                         </div>
                         <div class="form-group">
@@ -87,7 +97,9 @@ pageEncoding="ISO-8859-1"%>
                           <div class="checkbox">
                             <select name="categoryId">
                               <c:forEach items="${categories}" var="c">
-                                <option value="${c.id}">${c.name}</option>
+                                <option value="${c.getCategoryId()}">
+                                  ${c.getName()}
+                                </option>
                               </c:forEach>
                             </select>
                           </div>
@@ -103,7 +115,9 @@ pageEncoding="ISO-8859-1"%>
                           Reset
                         </button>
                       </form>
-					  <div><label for="">${thongbao}</label></div>
+                      <div class="alert alert-primary" role="alert">
+                        <strong>${thongBao}</strong>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -25,13 +25,16 @@ c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\dao\IUserDa
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\model\News.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\admin\DetailProductController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\client\LoginController.java
+c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\admin\TestController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\client\AboutController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\dao\IItemDao.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\util\CurrencyPrice.java
+c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\config\EncodingUrl.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\client\HomeController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\jdbc\JDBCConnection.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\client\CartEditController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\service\ICategoryService.java
+c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\admin\EditProductController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\client\WaitingController.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\dao\ICategoryDao.java
 c:\Users\ASUS\Desktop\Java\webshopcake\src\main\java\com\shopwebcake\controller\client\ContactController.java

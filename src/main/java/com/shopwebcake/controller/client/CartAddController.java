@@ -2,7 +2,6 @@ package com.shopwebcake.controller.client;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +27,7 @@ public class CartAddController extends HttpServlet {
 		CurrencyPrice currencyPrice = new CurrencyPrice();
 		String isEdit = req.getParameter("isEdit");
 		if (obj == null) {
-			Map<Integer, Item> map = new HashMap<Integer, Item>(); // Nếu giỏ hàng = null thì tạo mới một obj giỏ hàng
+			HashMap<Integer, Item> hashMapCart = new HashMap<Integer, Item>(); // Nếu giỏ hàng = null thì tạo mới một obj giỏ hàng
 
 			String cakeId = req.getParameter("cakeId");
 			String stringQuantity = req.getParameter("quantity"); // Lấy cakeId và quantity từ req
@@ -48,17 +47,17 @@ public class CartAddController extends HttpServlet {
 			item.setCake(cake);
 
 			// THêm cake vào giỏ hàng
-			map.put(item.getCake().getCakeId(), item);
+			hashMapCart.put(item.getCake().getCakeId(), item);
 
 			httpSession.setAttribute("quantity", quantity);
 			httpSession.setAttribute("cartPrice", cart);
-			httpSession.setAttribute("cart", map);
+			httpSession.setAttribute("cart", hashMapCart);
 
 			String stringTotal = currencyPrice.curPrice(total);
 			httpSession.setAttribute("total", stringTotal); // set thông tin vào session
 
 		} else {
-			Map<Integer, Item> map = (Map<Integer, Item>) obj; // Giỏ hàng k null thì cast về dạng Map
+			HashMap<Integer, Item> hashMapCart = (HashMap<Integer, Item>) obj; // Giỏ hàng k null thì cho vào HashMap
 
 			String cakeId = req.getParameter("cakeId");
 			String stringQuantity = req.getParameter("quantity");
@@ -71,20 +70,18 @@ public class CartAddController extends HttpServlet {
 			item.setUnitPrice(quantity * cake.getPrice());
 			item.setCake(cake);
 
-			Item existedCartItem = map.get(Integer.valueOf(cakeId));// Lay item co key la cakeId trong map
+			Item existedCartItem = hashMapCart.get(Integer.valueOf(cakeId));// Lay item co key la cakeId trong hashMapCart
 
 			// Sửa giỏ hàng
 			if (isEdit.equals("true")) {
 
 				existedCartItem.setQuantity(quantity);
-				existedCartItem.setUnitPrice(item.getUnitPrice());
-		
+				existedCartItem.setUnitPrice(item.getUnitPrice());		
 				Cart cart = (Cart) httpSession.getAttribute("cartPrice");
 				long totalPrice = cart.getTotalPrice();
-
 				totalPrice = totalPrice + item.getUnitPrice();
 				cart.setTotalPrice(totalPrice);
-				httpSession.setAttribute("cart", map);
+				httpSession.setAttribute("cart", hashMapCart);
 
 				String stringTotal = currencyPrice.curPrice(totalPrice);
 				httpSession.setAttribute("total", stringTotal);
@@ -92,23 +89,23 @@ public class CartAddController extends HttpServlet {
 				return;
 			}
 
-			// update map
+			// update hashMapCart
 			if (existedCartItem == null) {
-				map.put(item.getCake().getCakeId(), item);
+				hashMapCart.put(item.getCake().getCakeId(), item);
 			} else {
 				existedCartItem.setQuantity(existedCartItem.getQuantity() + quantity);
 				existedCartItem.setUnitPrice(existedCartItem.getUnitPrice() + item.getUnitPrice());
 				existedCartItem.setCurrencyPrice(currencyPrice.curPrice(existedCartItem.getUnitPrice()));
 			}
 
-			httpSession.setAttribute("cart", map); // set map vao session
+			httpSession.setAttribute("cart", hashMapCart); // set hashMapCart vao session
 
 			Cart cart = (Cart) httpSession.getAttribute("cartPrice");
 			long totalPrice = cart.getTotalPrice();
 
 			totalPrice = totalPrice + item.getUnitPrice();
 			cart.setTotalPrice(totalPrice);
-			httpSession.setAttribute("cart", map);
+			httpSession.setAttribute("cart", hashMapCart);
 
 			String stringTotal = currencyPrice.curPrice(totalPrice);
 			httpSession.setAttribute("total", stringTotal);

@@ -15,9 +15,6 @@ import com.shopwebcake.model.Cake;
 import com.shopwebcake.service.impl.CakeService;
 import com.shopwebcake.service.impl.CategoryService;
 
-
-
-
 @WebServlet(urlPatterns = { "/admin-product-list" })
 public class ProductListController extends HttpServlet {
 	CakeService cakeService = new CakeService();

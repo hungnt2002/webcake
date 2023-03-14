@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
     <c:url value="template/admin" var="url"></c:url>
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
@@ -13,7 +13,7 @@
 							class="fa fa-dashboard fa-3x"></i> Dashboard</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin-product-list"><i class="fa fa-desktop fa-3x"></i>
 							Product Management</a></li>
-					<li><a href="${pageContext.request.contextPath }/add-product-page"><i class="fa fa-qrcode fa-3x"></i>
+					<li><a href="${pageContext.request.contextPath }/add-product"><i class="fa fa-qrcode fa-3x"></i>
 							Thêm sản phẩm</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/order/list"><i
 							class="fa fa-bar-chart-o fa-3x"></i> Order Management</a></li>

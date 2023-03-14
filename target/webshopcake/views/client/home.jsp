@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
@@ -139,30 +139,35 @@
 
 	<!-- Start Categories  -->
 	<div class="categories-shop">
-    <div class="container">
-        <div class="title-all text-center">
-            <h1>Sản phẩm bán chạy</h1>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="template/client/images/cperesaurieng.jpg " alt="" />
-                    <a class="btn hvr-hover" href="#">Xem</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="template/client/images/banhngot1.jpg " alt="" /> <a class="btn hvr-hover" href="#">Xem</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="template/client/images/bonglantrung.jpg" alt="" /> <a class="btn hvr-hover" href="#"> Xem</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+		<div class="container">
+			<div class="title-all text-center">
+				<h1>Sản phẩm bán chạy</h1>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="shop-cat-box">
+						<img class="img-fluid" src="template/client/images/cperesaurieng.jpg " alt="" />
+						<a class="btn hvr-hover"
+							href="${pageContext.request.contextPath }/cake-detail?cakeId=6">Xem</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="shop-cat-box">
+						<img class="img-fluid" src="template/client/images/banhngot1.jpg " alt="" /> <a
+							class="btn hvr-hover"
+							href="${pageContext.request.contextPath }/cake-detail?cakeId=8">Xem</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="shop-cat-box">
+						<img class="img-fluid" src="template/client/images/bonglantrung.jpg" alt="" /> <a
+							class="btn hvr-hover"
+							href="${pageContext.request.contextPath }/cake-detail?cakeId=7"> Xem</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- End Categories -->
 	<div class="box-add-products">
 		<div class="container">

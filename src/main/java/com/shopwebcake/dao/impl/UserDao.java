@@ -1,6 +1,5 @@
 package com.shopwebcake.dao.impl;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 	public void insert(User user) {
 
 		String sql = "INSERT INTO tblUser ( username, password,fullName,roleId,gmail) VALUES (?,?,?,?,?)";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -65,7 +64,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 	@Override
 	public void edit(User user) {
 		String sql = "UPDATE tblUser SET username = ? , password = ?, fullName = ?,roleId=?, gmail=? WHERE userId=? ";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -111,7 +110,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 	@Override
 	public void delete(int id) {
 		String sql = "DELETE FROM tblUser WHERE userId=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 
 		try {
@@ -147,7 +146,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 	@Override
 	public User get(String userName) {
 		String sql = "SELECT * FROM tblUser WHERE userName=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = new User();
@@ -194,7 +193,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 	@Override
 	public User get(int id) {
 		String sql = "SELECT * FROM tblUser WHERE userId=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		User user = new User();
@@ -242,7 +241,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 	public List<User> getAll() {
 		List<User> userList = new ArrayList<User>();
 		String sql = "SELECT * FROM tblUser";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -298,13 +297,14 @@ public class UserDao extends JDBCConnection implements IUserDao {
 		boolean duplicate = false;
 		String sql = "SELECT * FROM tblUser WHERE gmail=?";
 
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 
 			connection = JDBCConnection.getJDBCConnection();
 			statement = connection.prepareStatement(sql);
+
 			statement.setString(1, gmail);
 			resultSet = statement.executeQuery();
 
@@ -338,7 +338,7 @@ public class UserDao extends JDBCConnection implements IUserDao {
 		boolean duplicate = false;
 		String sql = "SELECT * FROM tblUser WHERE username=?";
 
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {

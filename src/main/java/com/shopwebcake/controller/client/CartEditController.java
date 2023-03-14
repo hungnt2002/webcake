@@ -2,7 +2,6 @@ package com.shopwebcake.controller.client;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +25,9 @@ public class CartEditController extends HttpServlet {
         HttpSession httpSession = req.getSession();
         Object obj = httpSession.getAttribute("cart");
         CurrencyPrice currencyPrice = new CurrencyPrice();
-        Map<Integer, Item> map = (Map<Integer, Item>) obj; // Giỏ hàng k null thì cast về dạng Map
+        HashMap<Integer, Item> hashMapCart = (HashMap<Integer, Item>) obj; // Giỏ hàng k null thì cast về dạng Map
 
-        httpSession.setAttribute("cart", map);
+        httpSession.setAttribute("cart", hashMapCart);
         String cakeId = req.getParameter("cakeId");
         String stringQuantity = req.getParameter("quantity");
         System.out.println(stringQuantity);
@@ -40,15 +39,15 @@ public class CartEditController extends HttpServlet {
         item.setUnitPrice(quantity * cake.getPrice());
         item.setCake(cake);
 
-        Item existedCartItem = map.get(Integer.valueOf(cakeId));// Lay item co key la cakeId trong map
+        Item existedCartItem = hashMapCart.get(Integer.valueOf(cakeId));// Lay item co key la cakeId trong hashMapCart
         existedCartItem.setQuantity(quantity);
         existedCartItem.setUnitPrice(item.getUnitPrice());
         existedCartItem.setCurrencyPrice(currencyPrice.curPrice(existedCartItem.getUnitPrice()));
-        httpSession.setAttribute("cart", map); // set map vao session
+        httpSession.setAttribute("cart", hashMapCart); // set hashMapCart vao session
 
         long totalPrice = 0;
         Cart cart = (Cart) httpSession.getAttribute("cartPrice");
-        for (Item value : map.values()) {
+        for (Item value : hashMapCart.values()) {
             totalPrice += value.getUnitPrice();
         }
 

@@ -13,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.shopwebcake.model.Cake;
+import com.shopwebcake.model.Category;
 import com.shopwebcake.service.impl.CakeService;
 import com.shopwebcake.service.impl.CategoryService;
 
@@ -24,62 +26,90 @@ import com.shopwebcake.service.impl.CategoryService;
 public class AddProductController extends HttpServlet {
 	CakeService cakeService = new CakeService();
 	CategoryService cateService = new CategoryService();
+	String nameCake;
+	long price;
+	String content;
+	int categoryId;
+	String thumnail;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// String id = req.getParameter("idProduct");
-		// Cake cake = cakeService.get(Integer.parseInt(id));
-		// req.setAttribute("cake", cake);
+
+		CategoryService categoryService = new CategoryService();
+		req.setAttribute("categories", categoryService.getAll());
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/add-product.jsp");
 		dispatcher.forward(req, resp);
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
-		String thongbao = "";
+		String thongBao = "";
 		if (isMultipart) {
-			FileItemFactory factory = new DiskFileItemFactory();
+			DiskFileItemFactory factory = new DiskFileItemFactory();
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			try {
+				String webappPath = getServletContext().getRealPath("/") + "template/client/images";
 				List<FileItem> items = upload.parseRequest(req);
 				for (FileItem item : items) {
 					if (!item.isFormField()) {
 						String fileName = item.getName();
-						File uploadDir = new File("template/client/images");
+						thumnail = fileName;
+						File uploadDir = new File(webappPath);
 						if (!uploadDir.exists()) {
 							uploadDir.mkdir();
 						}
 						File file = new File(uploadDir + File.separator + fileName);
 						item.write(file);
+					} else {
+						if (item.getFieldName().equals("name")) {
+							nameCake = item.getString();
+						}
+						if (item.getFieldName().equals("price")) {
+							price = Long.parseLong(item.getString());
+						}
+						if (item.getFieldName().equals("content")) {
+							content = item.getString();
+						}
+						if (item.getFieldName().equals("categoryId")) {
+							categoryId = Integer.parseInt(item.getString());
+						}
 					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				thongBao = "Thêm thất bại";
 			}
 
-		}else{
-			req.setAttribute(thongbao, "Chưa thêm ảnh");
+		} else {
+			req.setAttribute("thongBao", "Chưa thêm ảnh");
 			return;
 		}
 
-		String nameCake = req.getParameter("name");
-		String price = req.getParameter("price");
-		String content = req.getParameter("content");
-		String categoryId = req.getParameter("categoryId");
-		String thumnail = req.getParameter("image");
 		System.out.println(nameCake);
+		System.out.println(price);
 		System.out.println(content);
+		System.out.println(categoryId);
 		System.out.println(thumnail);
-		// System.out.println(Long.parseLong(price));
 		Cake cake = new Cake();
 		cake.setCakeName(nameCake);
-		// cake.setPrice(Long.parseLong(price));
+		cake.setPrice(price);
 		cake.setContent(content);
 		cake.setThumbnail(thumnail);
+		Category category = new Category();
+		category.setCategoryId(categoryId);
+		cake.setCategory(category);
 		CakeService cakeService = new CakeService();
-		cakeService.insert(cake);
-		req.setAttribute(thongbao, "Thêm sản phẩm thành công");
-		resp.sendRedirect(req.getContextPath() + "/add-product");
+		thongBao = "Thêm thành công";
+
+		try {
+			cakeService.insert(cake);
+		} catch (Exception e) {
+			thongBao = "Thêm thất bại";
+		}
+		req.setAttribute("thongBao", thongBao);
+		doGet(req, resp);
 	}
+
 }

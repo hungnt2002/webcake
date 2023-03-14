@@ -17,7 +17,7 @@ public class ItemDao extends JDBCConnection implements IItemDao {
 	@Override
 	public void insert(Item item) {
 		String sql = "INSERT INTO tblCartItem (quantity, price, cakeId, cartId) VALUES (?,?,?,?)";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
@@ -56,7 +56,7 @@ public class ItemDao extends JDBCConnection implements IItemDao {
 	@Override
 	public void edit(Item item) {
 		String sql = "UPDATE tblCartItem SET quantity = ? , price = ?, cakeId = ?,cartId=?  WHERE id = ?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
@@ -96,7 +96,7 @@ public class ItemDao extends JDBCConnection implements IItemDao {
 	@Override
 	public void delete(int id) {
 		String sql = "DELETE FROM tblCartItem WHERE id=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 
 		try {
@@ -133,7 +133,7 @@ public class ItemDao extends JDBCConnection implements IItemDao {
 	@Override
 	public Item get(int id) {
 		String sql = "SELECT * FROM tblCartItem WHERE id=?";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Item item = new Item();
@@ -187,7 +187,7 @@ public class ItemDao extends JDBCConnection implements IItemDao {
 
 		List<Item> itemList = new ArrayList<Item>();
 		String sql = "SELECT * FROM tblCartItem ";
-		Connection connection = null;
+		java.sql.Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
